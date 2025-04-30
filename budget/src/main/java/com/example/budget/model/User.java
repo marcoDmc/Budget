@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -25,9 +27,9 @@ public class User {
     
     @Column(nullable = false, unique = true, length = 100)
     private String email;
-    
-    @Column(name = "password_hash", nullable = false)
-    private String passwordHash;
+
+    @Column(name = "password", nullable = false)
+    private String password;
     
     @Column(name = "created_at")
     private LocalDateTime createdAt;
