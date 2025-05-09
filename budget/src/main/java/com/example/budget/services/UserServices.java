@@ -85,4 +85,9 @@ public class UserServices {
 
         boolean isValidPassword = passwordEncoder.matches(data.getPassword(), findUserWithEmail.getPassword());
 
+        if(!isValidPassword) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("invalid credentials");
+        else userRepository.delete(findUserWithEmail);
+
+        return ResponseEntity.status(HttpStatus.OK).body("User deleted successfully");
+    }
 }
