@@ -1,5 +1,6 @@
 package com.example.budget.controllers.user;
 
+import com.example.budget.dtos.ForgotPasswordDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +21,12 @@ public class UserController {
     }
     @PostMapping("/user/create")
     public ResponseEntity<?> createUser(@RequestBody User data) {
-        UserServices userService = new UserServices();
-        return this.userService.create(data);
+        return userService.create(data);
 
+    }
+
+    @PostMapping("/user/forgot/password")
+    public ResponseEntity<?> forgotPassword(@RequestBody ForgotPasswordDTO data) {
+       return userService.forgotPassword(data);
     }
 }
