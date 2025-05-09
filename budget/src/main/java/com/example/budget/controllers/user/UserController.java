@@ -29,4 +29,10 @@ public class UserController {
     public ResponseEntity<?> forgotPassword(@RequestBody ForgotPasswordDTO data) {
        return userService.forgotPassword(data);
     }
+
+
+    @DeleteMapping("/user/delete")
+    public ResponseEntity<?> deleteUser(@RequestBody DeleteUserDTO data) {
+        return userService.deleteUser(data);
+    }
 }
