@@ -65,10 +65,10 @@ public class UserServices {
         boolean isValidPassword = passwordEncoder.matches(data.getPassword(), findUserWithEmail.getPassword());
 
         if(!isValidPassword) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("invalid credentials");
-
-        findUserWithEmail.setPassword(passwordEncoder.encode(data.getNewPassword()));
-
-        userRepository.save(findUserWithEmail);
+        else {
+            findUserWithEmail.setPassword(passwordEncoder.encode(data.getNewPassword()));
+            userRepository.save(findUserWithEmail);
+        }
 
         return ResponseEntity.status(HttpStatus.OK).body("change password successfully");
     }
