@@ -1,5 +1,6 @@
 package com.example.budget.controllers.user;
 
+import com.example.budget.dtos.DeleteUserDTO;
 import com.example.budget.dtos.ForgotPasswordDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
