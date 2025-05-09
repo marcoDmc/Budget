@@ -72,5 +72,17 @@ public class UserServices {
 
         return ResponseEntity.status(HttpStatus.OK).body("change password successfully");
     }
+    public ResponseEntity<?> deleteUser(DeleteUserDTO data) {
+        if (!EmailValidator.isValidEmail(data.getEmail())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid email format");
+        } else if (PasswordValidator.emptyPassword(data.getPassword())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid password format");
+        }
+
+        User findUserWithEmail = userRepository.findByEmail(data.getEmail());
+
+        if (findUserWithEmail == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("invalid credentials");
+
+        boolean isValidPassword = passwordEncoder.matches(data.getPassword(), findUserWithEmail.getPassword());
 
 }
