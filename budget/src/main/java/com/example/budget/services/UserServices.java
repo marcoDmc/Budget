@@ -1,5 +1,6 @@
 package com.example.budget.services;
 
+import com.example.budget.dtos.DeleteUserDTO;
 import com.example.budget.dtos.ForgotPasswordDTO;
 import com.example.budget.utils.NameValidator;
 import org.springframework.beans.factory.annotation.Autowired;
